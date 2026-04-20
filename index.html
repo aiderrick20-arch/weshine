@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Ainamaani Derrick | BCSIT Portfolio</title>
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #f0f0f0;
+            background: #0a0f1e;
+            position: relative;
+        }
+
+        /* Ethiopian Airways Background Image (Full Cover - high quality aviation) */
+        .hero-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            filter: brightness(0.3) contrast(1.1);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 2rem 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header / Hero */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 15, 30, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: 2rem 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.5);
+        }
+
+        .profile h1 {
+            font-size: 2.8rem;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #FFD966, #FFA500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile .tagline {
+            font-size: 1.2rem;
+            color: #ddd;
+            margin-bottom: 0.75rem;
+        }
+
+        .profile .badge {
+            background: #1e2a47;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #FFD966;
+        }
+
+        .contact-info {
+            text-align: right;
+        }
+
+        .contact-info p {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: #FFB347;
+            width: 24px;
+        }
+
+        /* section titles */
+        .section-title {
+            font-size: 2rem;
+            margin: 2rem 0 1.2rem 0;
+            border-left: 6px solid #FFB347;
+            padding-left: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .section-sub {
+            font-size: 1.3rem;
+            margin: 1.8rem 0 1rem 0;
+            color: #FFD966;
+            font-weight: 500;
+        }
+
+        /* projects grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .project-card {
+            background: rgba(20, 25, 45, 0.85);
+            backdrop-filter: blur(4px);
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid rgba(255, 200, 100, 0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            background: rgba(30, 36, 60, 0.95);
+            border-color: #FFB347;
+            box-shadow: 0 18px 30px rgba(0,0,0,0.5);
+        }
+
+        .project-icon {
+            font-size: 2.8rem;
+            color: #FFB347;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .project-card .tech-stack {
+            display: inline-block;
+            background: #2a2f4b;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin: 0.6rem 0.3rem 0.6rem 0;
+            letter-spacing: 0.5px;
+        }
+
+        .project-card p {
+            margin: 0.8rem 0;
+            color: #cfcfcf;
+        }
+
+        .status-badge {
+            background: #FFB34720;
+            border-left: 3px solid #FFB347;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            border-radius: 12px;
+        }
+
+        /* skills & linux commands section (for coursework) */
+        .skills-linux {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .skills-box, .linux-box {
+            flex: 1;
+            background: rgba(10, 15, 30, 0.75);
+            backdrop-filter: blur(4px);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 215, 0, 0.25);
+        }
+
+        .skills-box h3, .linux-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #FFD966;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: #2c3158;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            margin: 0.3rem 0.5rem 0.3rem 0;
+            font-size: 0.85rem;
+        }
+
+        .linux-commands {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.7rem;
+        }
+
+        .cmd-item {
+            font-family: monospace;
+            background: #0f1222;
+            padding: 0.3rem 0.7rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        .cmd-item i {
+            color: #FFB347;
+            width: 24px;
+        }
+
+        /* java programs list */
+        .java-programs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .java-card {
+            background: rgba(0,0,0,0.5);
+            border-radius: 1rem;
+            padding: 0.8rem 1.2rem;
+            flex: 1 1 200px;
+            border-left: 3px solid #FFB347;
+        }
+
+        .java-card strong {
+            color: #FFD966;
+        }
+
+        /* about me section */
+        .about-card {
+            background: rgba(10, 15, 30, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 1.5rem;
+            padding: 1.5rem 2rem;
+            margin: 1rem 0;
+            border: 1px solid rgba(255,215,0,0.2);
+        }
+
+        /* footer */
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255,215,0,0.2);
+            font-size: 0.85rem;
+            color: #bbb;
+        }
+
+        hr {
+            border-color: #FFB34730;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 780px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .contact-info {
+                text-align: center;
+                margin-top: 1rem;
+            }
+            .section-title {
+                font-size: 1.7rem;
+            }
+            .linux-commands {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Ethiopian Airways Background Image (Aviation / Airplane theme) -->
+<img class="hero-bg" src="https://images.unsplash.com/photo-1546039907-7fa05f864c02?q=80&w=2070&auto=format&fit=crop" 
+     alt="Ethiopian Airways - airplane flying above clouds"
+     onerror="this.src='https://wallpaperaccess.com/full/2866768.jpg';">
+<div class="overlay"></div>
+
+<div class="container">
+    <!-- Hero Section with personal details and email -->
+    <div class="hero">
+        <div class="profile">
+            <h1>Ainamaani Derrick</h1>
+            <div class="tagline"><i class="fas fa-laptop-code"></i> BCSIT Student | Aspiring Full Stack Developer | Tech Innovator</div>
+            <div class="badge"><i class="fas fa-graduation-cap"></i> Bachelor of Computer Science & Information Technology</div>
+        </div>
+        <div class="contact-info">
+            <p><i class="fas fa-envelope"></i><a href="mailto:ainamaani@example.com">Email Derrick</a> 
+        
+          
+            <p><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</p>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-card">
+        <p style="font-size: 1.1rem;"><i class="fas fa-quote-left" style="color:#FFB347; margin-right: 10px;"></i> 
+        I'm Ainamaani Derrick, a passionate BCSIT student dedicated to building real-world software solutions. 
+        Throughout my coursework, I have designed and developed fully functional systems that solve practical problems. 
+        My focus is on clean architecture, user experience, and scalable backends. Currently expanding my expertise in cloud deployment and modern web frameworks.</p>
+    </div>
+
+    <!-- ========== PROJECTS SECTION (e-commerce, hotel mgt, flight booking) ========= -->
+    <div class="section-title"><i class="fas fa-code-branch"></i> Featured Projects & Coursework</div>
+    <div class="projects-grid">
+        
+        <!-- E-Commerce Site -->
+        <div class="project-card">
+            <div class="project-icon"><i class="fas fa-shopping-cart"></i></div>
+            <h3>E-Commerce Platform</h3>
+            <div>
+                <span class="tech-stack"><i class="fab fa-java"></i> Java (Spring Boot)</span>
+                <span class="tech-stack"><i class="fas fa-database"></i> MySQL</span>
+                <span class="tech-stack"><i class="fab fa-html5"></i> HTML/CSS/JS</span>
+            </div>
+            <p>Complete online store with product catalog, shopping cart, user authentication, order processing, and an admin dashboard. Implemented secure payment simulation and inventory management. This project demonstrates my understanding of full-stack e-commerce workflows.</p>
+            <div class="status-badge"><i class="fas fa-check-circle"></i><a href="ainaderrick20@gmail.com"></a></div>
+        </div>
+
+        <!-- Hotel Management System -->
+        <div class="project-card">
+            <div class="project-icon"><i class="fas fa-hotel"></i></div>
+            <h3>Hotel Management System</h3>
+            <div>
+                <span class="tech-stack"><i class="fab fa-java"></i> Java Swing</span>
+                <span class="tech-stack"><i class="fas fa-database"></i> PostgreSQL</span>
+                <span class="tech-stack"><i class="fas fa-calendar-alt"></i> JDBC</span>
+            </div>
+            <p>Feature-rich desktop application for hotel operations: room booking, guest check-in/out, billing, and real-time room availability tracking. Built with a clean GUI and database integration. Used as a reference project in my database design coursework.</p>
+            <div class="status-badge"><i class="fas fa-trophy"></i> Grade: A | Database Systems Project</div>
+        </div>
+
+        <!-- Flight Booking Site (Currently Working On) -->
+        <div class="project-card">
+            <div class="project-icon"><i class="fas fa-plane-departure"></i></div>
+            <h3>Flight Booking System</h3>
+            <div>
+                <span class="tech-stack"><i class="fab fa-python"></i> Django (Backend)</span>
+                <span class="tech-stack"><i class="fas fa-cloud"></i> REST API</span>
+                <span class="tech-stack"><i class="fas fa-map-marked-alt"></i> Aviation Data APIs</span>
+            </div>
+            <p><strong>🚀 CURRENTLY DEVELOPING</strong> – A modern web platform for flight search, dynamic seat selection, fare comparison, and booking management. Inspired by Ethiopian Airlines' operational excellence, I'm building an intuitive interface with real-time flight data integration and user profiles.</p>
+            <div class="status-badge"><i class="fas fa-spinner fa-pulse"></i> Active Development · Expected Completion: July 2026</div>
+        </div>
+    </div>
+    
+    <!-- Technical Skills Overview -->
+    <div class="section-sub"><i class="fas fa-code"></i> Technical Toolbox</div>
+    <div class="skills-box" style="margin-bottom: 1.5rem;">
+        <div>
+            <span class="skill-tag"><i class="fab fa-java"></i> Java (Core, Swing, Spring Boot)</span>
+            <span class="skill-tag"><i class="fab fa-python"></i> Python / Django</span>
+            <span class="skill-tag"><i class="fas fa-database"></i> MySQL / PostgreSQL</span>
+            <span class="skill-tag"><i class="fab fa-html5"></i> HTML5/CSS3</span>
+            <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
+            <span class="skill-tag"><i class="fab fa-git-alt"></i> Git & GitHub</span>
+            <span class="skill-tag"><i class="fab fa-linux"></i> Linux (Ubuntu/CentOS)</span>
+            <span class="skill-tag"><i class="fas fa-cloud"></i> REST APIs</span>
+            <span class="skill-tag"><i class="fas fa-docker"></i> Docker Basics</span>
+        </div>
+    </div>
+
+    <!-- Coursework & Submission Info -->
+    <div class="about-card" style="margin-top: 1.5rem; text-align: center;">
+        <p><i class="fas fa-folder-open" style="color:#FFB347;"></i> <p> This digital portfolio demonstrates my project portfolio, including E‑commerce, Hotel Management System, and ongoing Flight Booking System</p>
+        <p style="margin-top: 0.8rem;"><i class="fas fa-envelope"></i> <strong>Email:</strong> ainaderrick20@gmail.com | For any collaboration or project inquiries.</p>
+    </div>
+
+    <footer>
+        <p><i class="far fa-copyright">2026</i>
+         <p><i class="fas fa-envelope"></i><a href="mailto:ainamaani@example.com">Email Derrick</a><br>
+        | Ethiopian Airways Tribute Background</p>
+        <p style="margin-top: 0.5rem;">📍 Kampala, Uganda </p>
+    </footer>
+</div>
+
+</body>
+  </html>
